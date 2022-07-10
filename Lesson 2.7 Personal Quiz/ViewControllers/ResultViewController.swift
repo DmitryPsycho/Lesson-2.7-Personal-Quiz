@@ -28,17 +28,20 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController {
     
+    private func getAnimalsArray() -> [Character] {
+        var animalsInAnswers: [Character] = []
+        for animal in answers {
+            animalsInAnswers.append(animal.animal.rawValue)
+        }
+        return animalsInAnswers
+    }
+    
     private func getMostCommonAnimal() -> String? {
         var animal: String?
-        var animalsInAnswers: [Character] = []
         var answersDictionary: [Character : Int] = [:]
         var maxValue = 0
         
-        for answer in answers {
-            animalsInAnswers.append(answer.animal.rawValue)
-        }
-        
-        animalsInAnswers.forEach { (element) in
+        getAnimalsArray().forEach { (element) in
             if let count = answersDictionary[element] {
                 answersDictionary[element] = count + 1
             } else {
