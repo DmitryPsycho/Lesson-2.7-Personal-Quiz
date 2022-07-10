@@ -18,9 +18,9 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAnimal()
-        animalLabel.text = mostCommonAnimal(inArray: animalsInAnswers)
-        getDefinition()
+        getAnimalArray()
+        getAnimalLabel()
+        getDefinitionLabel()
         backButtonHide()
     }
     
@@ -34,13 +34,13 @@ class ResultViewController: UIViewController {
 }
 
 extension ResultViewController {
-    private func getAnimal() {
+    private func getAnimalArray() {
         for answer in answers {
             animalsInAnswers.append(answer.animal.rawValue)
         }
     }
     
-    private func mostCommonAnimal(inArray animals: [Character]) -> String? {
+    private func getMostCommonAnimal(inArray animals: [Character]) -> String? {
         var animal: String?
         var answersDictionary: [Character : Int] = [:]
         animals.forEach { (element) in
@@ -60,14 +60,19 @@ extension ResultViewController {
         return animal
     }
     
-    private func getDefinition() {
-        if mostCommonAnimal(inArray: animalsInAnswers) == String(Animal.dog.rawValue) {
+    private func getAnimalLabel() {
+        guard let animal = getMostCommonAnimal(inArray: animalsInAnswers) else { return }
+        animalLabel.text = "Вы -  \(animal)"
+    }
+    
+    private func getDefinitionLabel() {
+        if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.dog.rawValue) {
             animalDescribeLabel.text = Animal.dog.definition
-        } else if mostCommonAnimal(inArray: animalsInAnswers) == String(Animal.cat.rawValue) {
+        } else if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.cat.rawValue) {
             animalDescribeLabel.text = Animal.cat.definition
-        } else if mostCommonAnimal(inArray: animalsInAnswers) == String(Animal.rabbit.rawValue) {
+        } else if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.rabbit.rawValue) {
             animalDescribeLabel.text = Animal.rabbit.definition
-        } else if mostCommonAnimal(inArray: animalsInAnswers) == String(Animal.turtle.rawValue) {
+        } else if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.turtle.rawValue) {
             animalDescribeLabel.text = Animal.turtle.definition
         }
     }
