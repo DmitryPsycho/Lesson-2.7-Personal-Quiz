@@ -40,10 +40,10 @@ extension ResultViewController {
         }
     }
     
-    private func getMostCommonAnimal(inArray animals: [Character]) -> String? {
+    private func getMostCommonAnimal() -> String? {
         var animal: String?
         var answersDictionary: [Character : Int] = [:]
-        animals.forEach { (element) in
+        animalsInAnswers.forEach { (element) in
             if let count = answersDictionary[element] {
                 answersDictionary[element] = count + 1
             } else {
@@ -61,18 +61,18 @@ extension ResultViewController {
     }
     
     private func getAnimalLabel() {
-        guard let animal = getMostCommonAnimal(inArray: animalsInAnswers) else { return }
+        guard let animal = getMostCommonAnimal() else { return }
         animalLabel.text = "Вы -  \(animal)"
     }
     
     private func getDefinitionLabel() {
-        if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.dog.rawValue) {
+        if getMostCommonAnimal() == String(Animal.dog.rawValue) {
             animalDescribeLabel.text = Animal.dog.definition
-        } else if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.cat.rawValue) {
+        } else if getMostCommonAnimal() == String(Animal.cat.rawValue) {
             animalDescribeLabel.text = Animal.cat.definition
-        } else if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.rabbit.rawValue) {
+        } else if getMostCommonAnimal() == String(Animal.rabbit.rawValue) {
             animalDescribeLabel.text = Animal.rabbit.definition
-        } else if getMostCommonAnimal(inArray: animalsInAnswers) == String(Animal.turtle.rawValue) {
+        } else if getMostCommonAnimal() == String(Animal.turtle.rawValue) {
             animalDescribeLabel.text = Animal.turtle.definition
         }
     }
