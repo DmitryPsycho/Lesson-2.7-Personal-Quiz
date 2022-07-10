@@ -16,8 +16,8 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAnimalLabel()
-        getDefinitionLabel()
+        setAnimalLabel()
+        setDefinitionLabel()
         backButtonHide()
     }
     
@@ -58,12 +58,12 @@ extension ResultViewController {
         return animal
     }
     
-    private func getAnimalLabel() {
+    private func setAnimalLabel() {
         guard let animal = getMostCommonAnimal() else { return }
         animalLabel.text = "Вы - \(animal)"
     }
     
-    private func getDefinitionLabel() {
+    private func setDefinitionLabel() {
         if getMostCommonAnimal() == String(Animal.dog.rawValue) {
             animalDescribeLabel.text = Animal.dog.definition
         } else if getMostCommonAnimal() == String(Animal.cat.rawValue) {
