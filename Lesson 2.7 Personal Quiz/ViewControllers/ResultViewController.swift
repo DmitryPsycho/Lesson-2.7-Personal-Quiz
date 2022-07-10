@@ -74,7 +74,7 @@ extension ResultViewController {
             animalDescribeLabel.text = Animal.cat.definition
         } else if getMostCommonAnimal() == String(Animal.rabbit.rawValue) {
             animalDescribeLabel.text = Animal.rabbit.definition
-        } else if getMostCommonAnimal() == String(Animal.turtle.rawValue) {
+        } else {
             animalDescribeLabel.text = Animal.turtle.definition
         }
     }
