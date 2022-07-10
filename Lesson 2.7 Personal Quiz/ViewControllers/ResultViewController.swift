@@ -43,6 +43,8 @@ extension ResultViewController {
     private func getMostCommonAnimal() -> String? {
         var animal: String?
         var answersDictionary: [Character : Int] = [:]
+        var maxValue = 0
+        
         animalsInAnswers.forEach { (element) in
             if let count = answersDictionary[element] {
                 answersDictionary[element] = count + 1
@@ -50,7 +52,7 @@ extension ResultViewController {
                 answersDictionary[element] = 1
             }
         }
-        var maxValue = 0
+        
         for (key, value) in answersDictionary {
             if value > maxValue {
                 maxValue = value
@@ -62,7 +64,7 @@ extension ResultViewController {
     
     private func getAnimalLabel() {
         guard let animal = getMostCommonAnimal() else { return }
-        animalLabel.text = "Вы -  \(animal)"
+        animalLabel.text = "Вы - \(animal)"
     }
     
     private func getDefinitionLabel() {
