@@ -14,11 +14,8 @@ class ResultViewController: UIViewController {
     
     var answers: [Answer] = []
     
-    private var animalsInAnswers: [Character] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAnimalArray()
         getAnimalLabel()
         getDefinitionLabel()
         backButtonHide()
@@ -34,16 +31,16 @@ class ResultViewController: UIViewController {
 }
 
 extension ResultViewController {
-    private func getAnimalArray() {
-        for answer in answers {
-            animalsInAnswers.append(answer.animal.rawValue)
-        }
-    }
     
     private func getMostCommonAnimal() -> String? {
         var animal: String?
+        var animalsInAnswers: [Character] = []
         var answersDictionary: [Character : Int] = [:]
         var maxValue = 0
+        
+        for answer in answers {
+            animalsInAnswers.append(answer.animal.rawValue)
+        }
         
         animalsInAnswers.forEach { (element) in
             if let count = answersDictionary[element] {
