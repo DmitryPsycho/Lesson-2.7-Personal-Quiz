@@ -24,10 +24,6 @@ class ResultViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true)
     }
-    
-    deinit {
-        print("ResultViewController has been deallocated")
-    }
 }
 
 extension ResultViewController {
