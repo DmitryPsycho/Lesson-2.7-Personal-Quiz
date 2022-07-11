@@ -41,7 +41,7 @@ extension ResultViewController {
         var answersDictionary: [Character : Int] = [:]
         var maxValue = 0
         
-        getAnimalsArray().forEach { (element) in
+        getAnimalsArray().sorted(by: >).forEach { (element) in
             if let count = answersDictionary[element] {
                 answersDictionary[element] = count + 1
             } else {
